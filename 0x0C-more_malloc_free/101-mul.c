@@ -1,38 +1,20 @@
-#include "main.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <limits.h>
+import sys
 
-/**
- * main - multiplies two positive numbers
- * @argc: n arguments
- * @argv: args
- * Return: int
-**/
+def multiply(num1, num2):
+    return num1 * num2
 
-int main(int argc, char *argv[])
-{
-	unsigned long mul;
-	int i, j;
-
-	if (argc != 3)
-	{
-		printf("Error\n");
-		exit(98);
-	}
-
-	for (i = 1; i < argc; i++)
-	{
-		for (j = 0; argv[i][j] != '\0'; j++)
-		{
-			if (argv[i][j] > 57 || argv[i][j] < 48)
-			{
-				printf("Error\n");
-				exit(98);
-			}
-		}
-	}
-	mul = atol(argv[1]) * atol(argv[2]);
-	printf("%lu\n", mul);
-	return (0);
-}
+if __name__ == "__main__":
+    if len(sys.argv) != 3:
+        print("Error")
+        sys.exit(98)
+    try:
+        num1 = int(sys.argv[1])
+        num2 = int(sys.argv[2])
+    except ValueError:
+        print("Error")
+        sys.exit(98)
+    if num1 < 0 or num2 < 0:
+        print("Error")
+        sys.exit(98)
+    result = multiply(num1, num2)
+    print(result)
